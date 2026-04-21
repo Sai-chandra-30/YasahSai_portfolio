@@ -1,6 +1,16 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useSpring } from "framer-motion";
+import { useEffect, useState } from "react";
+
+const roles = [
+  "Software Engineer",
+  "AI Engineer",
+  "Full Stack Developer",
+  "Cloud & AI Enthusiast",
+  "React + TypeScript Dev",
+  "Python & ML Builder",
+];
 
 const socialLinks = [
   {
@@ -32,33 +42,115 @@ const socialLinks = [
   },
 ];
 
+const orbs = [
+  { size: 500, x: "10%", y: "20%", duration: 18, delay: 0, color: "rgba(6,182,212,0.07)" },
+  { size: 350, x: "70%", y: "60%", duration: 22, delay: 3, color: "rgba(139,92,246,0.06)" },
+  { size: 280, x: "50%", y: "10%", duration: 15, delay: 6, color: "rgba(6,182,212,0.05)" },
+];
+
+function TypewriterText() {
+  const [index, setIndex] = useState(0);
+  const [displayed, setDisplayed] = useState("");
+  const [deleting, setDeleting] = useState(false);
+
+  useEffect(() => {
+    const current = roles[index];
+    let timeout: ReturnType<typeof setTimeout>;
+
+    if (!deleting && displayed.length < current.length) {
+      timeout = setTimeout(() => setDisplayed(current.slice(0, displayed.length + 1)), 60);
+    } else if (!deleting && displayed.length === current.length) {
+      timeout = setTimeout(() => setDeleting(true), 1800);
+    } else if (deleting && displayed.length > 0) {
+      timeout = setTimeout(() => setDisplayed(current.slice(0, displayed.length - 1)), 35);
+    } else if (deleting && displayed.length === 0) {
+      setDeleting(false);
+      setIndex((prev) => {
+        let next: number;
+        do { next = Math.floor(Math.random() * roles.length); } while (next === prev);
+        return next;
+      });
+    }
+    return () => clearTimeout(timeout);
+  }, [displayed, deleting, index]);
+
+  return (
+    <span className="text-accent">
+      {displayed}
+      <motion.span
+        animate={{ opacity: [1, 0] }}
+        transition={{ repeat: Infinity, duration: 0.7 }}
+        className="inline-block w-0.5 h-6 bg-accent ml-0.5 align-middle"
+      />
+    </span>
+  );
+}
+
 const container = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.15 } },
+  show: { transition: { staggerChildren: 0.12 } },
 };
 
-const item = {
-  hidden: { opacity: 0, y: 30 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+const word = {
+  hidden: { opacity: 0, y: 40, filter: "blur(8px)" },
+  show: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
 };
 
 export default function Hero() {
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const springX = useSpring(mouseX, { stiffness: 40, damping: 20 });
+  const springY = useSpring(mouseY, { stiffness: 40, damping: 20 });
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    mouseX.set((e.clientX - rect.left - rect.width / 2) * 0.03);
+    mouseY.set((e.clientY - rect.top - rect.height / 2) * 0.03);
+  };
+
   return (
     <section
       id="hero"
       className="min-h-screen flex items-center justify-center relative overflow-hidden"
+      onMouseMove={handleMouseMove}
     >
-      {/* Background grid pattern */}
+      {/* Animated orbs */}
+      {orbs.map((orb, i) => (
+        <motion.div
+          key={i}
+          className="absolute rounded-full pointer-events-none"
+          style={{
+            width: orb.size,
+            height: orb.size,
+            left: orb.x,
+            top: orb.y,
+            background: `radial-gradient(circle, ${orb.color}, transparent 70%)`,
+            x: springX,
+            y: springY,
+          }}
+          animate={{
+            scale: [1, 1.15, 1],
+            x: [0, 30, -20, 0],
+            y: [0, -25, 20, 0],
+          }}
+          transition={{
+            duration: orb.duration,
+            delay: orb.delay,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+      ))}
+
+      {/* Grid */}
       <div
-        className="absolute inset-0 opacity-[0.03]"
+        className="absolute inset-0 opacity-[0.025]"
         style={{
           backgroundImage:
             "linear-gradient(#06b6d4 1px, transparent 1px), linear-gradient(to right, #06b6d4 1px, transparent 1px)",
           backgroundSize: "60px 60px",
         }}
       />
-      {/* Radial glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(6,182,212,0.08)_0%,_transparent_70%)]" />
 
       <motion.div
         variants={container}
@@ -66,54 +158,71 @@ export default function Hero() {
         animate="show"
         className="relative z-10 text-center max-w-3xl mx-auto px-6"
       >
-        <motion.p variants={item} className="text-accent font-semibold text-sm uppercase tracking-widest mb-4">
+        <motion.p variants={word} className="text-accent font-semibold text-sm uppercase tracking-widest mb-4">
           Hi, I&apos;m
         </motion.p>
 
-        <motion.h1 variants={item} className="text-5xl md:text-7xl font-extrabold text-gray-50 mb-4 leading-tight">
-          Yasah Sai Chandra
-          <span className="block text-accent">Borusu</span>
-        </motion.h1>
+        {/* Name — word by word */}
+        <h1 className="text-5xl md:text-7xl font-extrabold text-gray-50 mb-4 leading-tight">
+          {"Yasah Sai Chandra".split(" ").map((w) => (
+            <motion.span key={w} variants={word} className="inline-block mr-4">
+              {w}
+            </motion.span>
+          ))}
+          <motion.span variants={word} className="block text-accent mt-1">
+            Borusu
+          </motion.span>
+        </h1>
 
-        <motion.p variants={item} className="text-xl md:text-2xl text-gray-400 mb-8">
-          Full Stack Developer &amp; Cloud/AI Enthusiast
+        {/* Typewriter role */}
+        <motion.p variants={word} className="text-xl md:text-2xl text-gray-400 mb-8 h-8">
+          <TypewriterText />
         </motion.p>
 
-        <motion.p variants={item} className="text-gray-500 mb-10 max-w-xl mx-auto leading-relaxed">
+        <motion.p variants={word} className="text-gray-500 mb-10 max-w-xl mx-auto leading-relaxed">
           CS student at George Mason University building scalable web apps, AI tools, and everything in between.
         </motion.p>
 
-        {/* CTAs */}
-        <motion.div variants={item} className="flex flex-wrap gap-4 justify-center mb-12">
-          <a
+        {/* CTAs with spring hover */}
+        <motion.div variants={word} className="flex flex-wrap gap-4 justify-center mb-12">
+          <motion.a
             href="#projects"
-            className="px-8 py-3 bg-accent text-background font-semibold rounded-lg hover:bg-accent-hover transition-colors duration-200"
+            whileHover={{ scale: 1.06, boxShadow: "0 0 24px rgba(6,182,212,0.4)" }}
+            whileTap={{ scale: 0.97 }}
+            transition={{ type: "spring", stiffness: 400, damping: 15 }}
+            className="px-8 py-3 bg-accent text-background font-semibold rounded-lg"
           >
             View Projects
-          </a>
-          <a
+          </motion.a>
+          <motion.a
             href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-8 py-3 border border-accent text-accent font-semibold rounded-lg hover:bg-accent/10 transition-colors duration-200"
+            whileHover={{ scale: 1.06, backgroundColor: "rgba(6,182,212,0.1)" }}
+            whileTap={{ scale: 0.97 }}
+            transition={{ type: "spring", stiffness: 400, damping: 15 }}
+            className="px-8 py-3 border border-accent text-accent font-semibold rounded-lg"
           >
             Download Resume
-          </a>
+          </motion.a>
         </motion.div>
 
-        {/* Social links */}
-        <motion.div variants={item} className="flex justify-center gap-6">
+        {/* Social icons with stagger + spring hover */}
+        <motion.div variants={word} className="flex justify-center gap-6">
           {socialLinks.map((s) => (
-            <a
+            <motion.a
               key={s.label}
               href={s.href}
               target={s.href.startsWith("mailto") ? undefined : "_blank"}
               rel="noopener noreferrer"
               aria-label={s.label}
-              className="text-gray-500 hover:text-accent transition-colors duration-200"
+              whileHover={{ scale: 1.3, color: "#06b6d4", y: -3 }}
+              whileTap={{ scale: 0.9 }}
+              transition={{ type: "spring", stiffness: 400, damping: 12 }}
+              className="text-gray-500"
             >
               {s.icon}
-            </a>
+            </motion.a>
           ))}
         </motion.div>
       </motion.div>
@@ -122,13 +231,13 @@ export default function Hero() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
+        transition={{ delay: 2 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-gray-600"
       >
         <span className="text-xs uppercase tracking-widest">Scroll</span>
         <motion.div
-          animate={{ y: [0, 6, 0] }}
-          transition={{ repeat: Infinity, duration: 1.5 }}
+          animate={{ y: [0, 8, 0] }}
+          transition={{ repeat: Infinity, duration: 1.4, ease: "easeInOut" }}
         >
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />

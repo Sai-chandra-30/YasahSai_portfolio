@@ -2,9 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Dark mode (default) */
 :root {
-  --background: #0a0a0a;
-  --foreground: #f9fafb;
+  --bg: #0a0a0a;
+  --surface: #111827;
+  --accent: #06b6d4;
+  --accent-hover: #0891b2;
+  --border: #1f2937;
+  --text-primary: #f9fafb;
+  --text-muted: #6b7280;
+}
+
+/* Light mode */
+.light {
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --accent: #0891b2;
+  --accent-hover: #0e7490;
+  --border: #e2e8f0;
+  --text-primary: #0f172a;
+  --text-muted: #64748b;
 }
 
 html {
@@ -12,24 +29,42 @@ html {
 }
 
 body {
-  background-color: var(--background);
-  color: var(--foreground);
+  background-color: var(--bg);
+  color: var(--text-primary);
   font-family: Inter, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Tailwind text utilities that pick up the theme */
+.text-primary { color: var(--text-primary); }
+.text-muted   { color: var(--text-muted); }
+
 /* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: #0a0a0a;
-}
-::-webkit-scrollbar-thumb {
-  background: #1f2937;
-  border-radius: 3px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #06b6d4;
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+/* Light mode: remap hardcoded gray text classes so all components adapt */
+.light .text-gray-50  { color: #0f172a; }
+.light .text-gray-100 { color: #1e293b; }
+.light .text-gray-200 { color: #334155; }
+.light .text-gray-300 { color: #475569; }
+.light .text-gray-400 { color: #64748b; }
+.light .text-gray-500 { color: #94a3b8; }
+.light .text-gray-600 { color: #94a3b8; }
+
+/* Light mode: surface & background overrides */
+.light .bg-surface   { background-color: var(--surface); }
+.light .bg-background { background-color: var(--bg); }
+.light .border-border { border-color: var(--border); }
+
+/* Input fields in light mode */
+.light input,
+.light textarea {
+  background-color: var(--surface);
+  color: var(--text-primary);
+  border-color: var(--border);
 }
 
 @layer utilities {
@@ -37,9 +72,11 @@ body {
     @apply py-20 px-6 md:px-12 lg:px-24;
   }
   .section-title {
-    @apply text-3xl md:text-4xl font-bold text-gray-50 mb-2;
+    @apply text-3xl md:text-4xl font-bold mb-2;
+    color: var(--text-primary);
   }
   .section-subtitle {
-    @apply text-accent font-semibold text-sm uppercase tracking-widest mb-4;
+    @apply font-semibold text-sm uppercase tracking-widest mb-4;
+    color: var(--accent);
   }
 }

@@ -35,6 +35,23 @@ const skillGroups = [
   },
 ];
 
+const cardVariants = {
+  hidden: { opacity: 0, y: 30, scale: 0.95 },
+  show: {
+    opacity: 1, y: 0, scale: 1,
+    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+const badgeVariants = {
+  hidden: { opacity: 0, scale: 0.6 },
+  show: (i: number) => ({
+    opacity: 1,
+    scale: 1,
+    transition: { type: "spring", stiffness: 350, damping: 18, delay: i * 0.05 },
+  }),
+};
+
 export default function Skills() {
   return (
     <section id="skills" className="section-padding">
@@ -48,31 +65,57 @@ export default function Skills() {
         >
           <p className="section-subtitle">What I work with</p>
           <h2 className="section-title">Skills</h2>
-          <div className="w-16 h-1 bg-accent rounded" />
+          <motion.div
+            initial={{ width: 0 }}
+            whileInView={{ width: 64 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="h-1 bg-accent rounded"
+          />
         </motion.div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {skillGroups.map((group, i) => (
             <motion.div
               key={group.category}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              variants={cardVariants}
+              initial="hidden"
+              whileInView="show"
               viewport={{ once: true, margin: "-30px" }}
-              transition={{ duration: 0.4, delay: i * 0.08 }}
-              className="bg-surface border border-border rounded-xl p-5 hover:border-accent/40 transition-colors duration-300"
+              custom={i}
+              transition={{ delay: i * 0.08 }}
+              whileHover={{ y: -4, borderColor: "rgba(6,182,212,0.4)" }}
+              className="bg-surface border border-border rounded-xl p-5 transition-colors duration-300"
             >
               <div className="flex items-center gap-2 mb-4">
-                <span className="text-xl">{group.icon}</span>
+                <motion.span
+                  className="text-xl"
+                  whileHover={{ rotate: [0, -15, 15, 0], scale: 1.2 }}
+                  transition={{ duration: 0.4 }}
+                >
+                  {group.icon}
+                </motion.span>
                 <h3 className="text-gray-50 font-semibold text-sm">{group.category}</h3>
               </div>
               <div className="flex flex-wrap gap-2">
-                {group.skills.map((skill) => (
-                  <span
+                {group.skills.map((skill, j) => (
+                  <motion.span
                     key={skill}
-                    className="text-xs text-gray-300 bg-background border border-border px-3 py-1 rounded-full hover:border-accent/50 hover:text-accent transition-colors duration-200"
+                    variants={badgeVariants}
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={{ once: true }}
+                    custom={j}
+                    whileHover={{
+                      scale: 1.12,
+                      color: "#06b6d4",
+                      borderColor: "rgba(6,182,212,0.5)",
+                      backgroundColor: "rgba(6,182,212,0.08)",
+                    }}
+                    className="text-xs text-gray-300 bg-background border border-border px-3 py-1 rounded-full cursor-default"
                   >
                     {skill}
-                  </span>
+                  </motion.span>
                 ))}
               </div>
             </motion.div>

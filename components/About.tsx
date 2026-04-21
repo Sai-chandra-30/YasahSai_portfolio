@@ -27,7 +27,13 @@ export default function About() {
         >
           <p className="section-subtitle">Get to know me</p>
           <h2 className="section-title">About Me</h2>
-          <div className="w-16 h-1 bg-accent rounded" />
+          <motion.div
+            initial={{ width: 0 }}
+            whileInView={{ width: 64 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="h-1 bg-accent rounded"
+          />
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -40,18 +46,32 @@ export default function About() {
             className="flex justify-center"
           >
             <div className="relative w-64 h-64">
-              {/* Decorative ring */}
-              <div className="absolute inset-0 rounded-2xl border-2 border-accent/30 rotate-6" />
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-accent/10 via-surface to-background border border-border flex flex-col items-center justify-center gap-3">
-                {/* Initials */}
-                <div className="w-24 h-24 rounded-full bg-gradient-to-br from-accent/30 to-accent/10 border border-accent/40 flex items-center justify-center">
-                  <span className="text-3xl font-bold text-accent tracking-tight">YS</span>
-                </div>
+              {/* Spinning decorative ring */}
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                className="absolute inset-0 rounded-2xl border-2 border-dashed border-accent/20"
+              />
+              {/* Static outer ring */}
+              <div className="absolute inset-2 rounded-2xl border border-accent/30" />
+              {/* Floating card */}
+              <motion.div
+                animate={{ y: [0, -8, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute inset-4 rounded-xl bg-gradient-to-br from-accent/10 via-surface to-background border border-border flex flex-col items-center justify-center gap-3 shadow-[0_0_40px_rgba(6,182,212,0.08)]"
+              >
+                <motion.div
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                  className="w-20 h-20 rounded-full bg-gradient-to-br from-accent/30 to-accent/10 border border-accent/40 flex items-center justify-center"
+                >
+                  <span className="text-2xl font-bold text-accent tracking-tight">YS</span>
+                </motion.div>
                 <div className="text-center">
                   <p className="text-gray-200 font-semibold text-sm">Yasah Sai Chandra</p>
-                  <p className="text-accent text-xs mt-0.5">Full Stack Developer</p>
+                  <p className="text-accent text-xs mt-0.5">Software Engineer</p>
                 </div>
-              </div>
+              </motion.div>
             </div>
           </motion.div>
 
@@ -75,11 +95,19 @@ export default function About() {
 
             {/* Highlights grid */}
             <div className="grid grid-cols-2 gap-4">
-              {highlights.map((h) => (
-                <div key={h.label} className="bg-surface border border-border rounded-lg p-4">
+              {highlights.map((h, i) => (
+                <motion.div
+                  key={h.label}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.3 + i * 0.08, type: "spring", stiffness: 300 }}
+                  whileHover={{ scale: 1.03, borderColor: "rgba(6,182,212,0.4)" }}
+                  className="bg-surface border border-border rounded-lg p-4 cursor-default"
+                >
                   <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">{h.label}</p>
                   <p className="text-gray-100 font-semibold text-sm">{h.value}</p>
-                </div>
+                </motion.div>
               ))}
             </div>
           </motion.div>
