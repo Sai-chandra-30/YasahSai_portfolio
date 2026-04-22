@@ -55,6 +55,18 @@ const experiences = [
     ],
     tags: ["Python", "Teaching", "Debugging"],
   },
+  {
+    title: "Undergraduate Teaching Assistant (Calculus 2)",
+    company: "George Mason University",
+    location: "Fairfax, VA",
+    period: "Aug 2023 – Dec 2024",
+    current: false,
+    bullets: [
+      "Led office hours and review sessions for Calculus 2, helping students work through integration techniques, sequences, series, and convergence tests.",
+      "Broke down complex mathematical concepts into approachable explanations, improving student confidence and exam performance.",
+    ],
+    tags: ["Calculus 2", "Teaching", "Mathematics"],
+  },
 ];
 
 export default function Experience() {
