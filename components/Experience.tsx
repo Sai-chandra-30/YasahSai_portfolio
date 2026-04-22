@@ -4,16 +4,16 @@ import { motion } from "framer-motion";
 
 const experiences = [
   {
-    title: "Full Stack Developer",
+    title: "Software Engineer",
     company: "TheCollegeTech",
     location: "Remote",
     period: "Aug 2025 – Present",
     current: true,
     bullets: [
-      "Feature implementation across Learning Management, Campus Management, and Placement Management systems (attendance & gradebook, timetables, placement applications, notifications).",
-      "Built reusable React + TypeScript component library (tables/forms/modals), form validation, and API clients; strengthened state/data handling with idiomatic hooks and patterns.",
-      "Designed and maintained Python REST endpoints with SQL data models; added filtering, pagination, and role-based access; wrote parameterized queries and basic migrations.",
-      "Authored unit/integration tests, created regression checklists, and participated in PR reviews to improve release quality.",
+      "Co-building an EdTech platform with a small team — shipping features across Learning Management, Campus Management, and Placement Management systems (attendance & gradebook, timetables, placement applications, notifications).",
+      "Architected a reusable React + TypeScript component library (tables/forms/modals) with form validation and API clients; improved state management using idiomatic hooks and patterns.",
+      "Designed and maintained Python REST endpoints with SQL data models; added filtering, pagination, and role-based access control with parameterized queries and migrations.",
+      "Established QA practices — unit/integration tests, regression checklists, and PR reviews — to keep releases stable as the product grows.",
     ],
     tags: ["React", "TypeScript", "Python", "SQL", "REST", "Git"],
   },

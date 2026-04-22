@@ -12,7 +12,7 @@ const highlights = [
   { label: "Based in", value: "Fairfax, VA" },
   { label: "Studying at", value: "George Mason University" },
   { label: "Graduating", value: "December 2026" },
-  { label: "Open to", value: "Internships & Full-Time" },
+  { label: "Open to", value: "Internships, Full-Time & Research" },
 ];
 
 export default function About() {
@@ -81,14 +81,19 @@ export default function About() {
             viewport={{ once: true, margin: "-50px" }}
           >
             <p className="text-gray-300 text-lg leading-relaxed mb-6">
-              I&apos;m a Computer Science student at George Mason University with a passion for building
-              full-stack web applications and AI-powered tools. From designing REST APIs to training
-              computer-vision models, I love turning complex problems into clean, working software.
+              I&apos;m a Computer Science student at George Mason University who loves building things that
+              actually work — from clean REST APIs and full-stack web apps to AI-powered tools, LLM integrations,
+              and computer-vision pipelines. I care about the craft: readable code, thoughtful design, and software
+              that solves real problems.
+            </p>
+            <p className="text-gray-400 leading-relaxed mb-2">
+              I&apos;ve shipped features as a Full Stack Developer at TheCollegeTech, built internal AI tools
+              on AWS Bedrock during my internship at Astrani Technology Solutions, and helped 150+ students
+              debug and grow as a Python TA at GMU. I thrive where product thinking meets solid engineering.
             </p>
             <p className="text-gray-400 leading-relaxed mb-8">
-              I&apos;ve worked as a Full Stack Developer at TheCollegeTech, interned with AI/Cloud at Astrani
-              Technology Solutions, and taught Python to 150+ students as a Teaching Assistant at GMU.
-              I thrive at the intersection of product, engineering, and AI.
+              I&apos;m always open to internships, full-time roles, research collaborations, or interesting
+              side projects — if you&apos;re building something meaningful, let&apos;s talk.
             </p>
 
             {/* Highlights grid */}

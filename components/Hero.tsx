@@ -180,7 +180,7 @@ export default function Hero() {
         </motion.p>
 
         <motion.p variants={word} className="text-gray-500 mb-10 max-w-xl mx-auto leading-relaxed">
-          CS student at George Mason University building scalable web apps, AI tools, and everything in between.
+          Building production-ready software at the intersection of full-stack engineering and AI.
         </motion.p>
 
         {/* CTAs with spring hover */}
