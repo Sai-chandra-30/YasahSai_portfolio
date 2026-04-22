@@ -197,7 +197,7 @@ export default function Contact() {
       >
         <p className="text-gray-600 text-sm">
           Designed &amp; Built by{" "}
-          <span className="text-accent">Yasah Sai Chandra Borusu</span> · {new Date().getFullYear()}
+          <span className="text-accent">Yasah Sai Chandra Borusu</span>
         </p>
       </motion.div>
     </section>
