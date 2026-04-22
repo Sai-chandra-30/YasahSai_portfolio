@@ -31,6 +31,19 @@ const experiences = [
     tags: ["AWS Bedrock", "S3", "DynamoDB", "PostgreSQL", "Azure", "AI/ML"],
   },
   {
+    title: "Software Engineer Intern",
+    company: "Rise Consultancy",
+    location: "Vijayawada, India (Remote)",
+    period: "May 2024 – Aug 2024",
+    current: false,
+    bullets: [
+      "Developed and maintained web applications as part of the engineering team, contributing to front-end and back-end features across the product.",
+      "Collaborated with the team to build responsive UI components and integrate REST APIs into client-facing applications.",
+      "Gained hands-on experience in the full software development lifecycle — from scoping and design to implementation and testing.",
+    ],
+    tags: ["Web Development", "REST APIs", "HTML/CSS", "JavaScript"],
+  },
+  {
     title: "Undergraduate Teaching Assistant (Python)",
     company: "George Mason University",
     location: "Fairfax, VA",
