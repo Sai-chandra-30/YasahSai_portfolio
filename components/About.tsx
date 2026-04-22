@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -45,32 +46,29 @@ export default function About() {
             viewport={{ once: true }}
             className="flex justify-center"
           >
-            <div className="relative w-64 h-64">
+            <div className="relative w-72 h-72">
               {/* Spinning decorative ring */}
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-0 rounded-2xl border-2 border-dashed border-accent/20"
+                className="absolute inset-0 rounded-full border-2 border-dashed border-accent/20"
               />
-              {/* Static outer ring */}
-              <div className="absolute inset-2 rounded-2xl border border-accent/30" />
-              {/* Floating card */}
+              {/* Accent glow */}
+              <div className="absolute inset-2 rounded-full shadow-[0_0_40px_rgba(6,182,212,0.12)]" />
+              {/* Photo */}
               <motion.div
-                animate={{ y: [0, -8, 0] }}
+                animate={{ y: [0, -6, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute inset-4 rounded-xl bg-gradient-to-br from-accent/10 via-surface to-background border border-border flex flex-col items-center justify-center gap-3 shadow-[0_0_40px_rgba(6,182,212,0.08)]"
+                whileHover={{ scale: 1.03 }}
+                className="absolute inset-3 rounded-full overflow-hidden border-2 border-accent/40"
               >
-                <motion.div
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                  className="w-20 h-20 rounded-full bg-gradient-to-br from-accent/30 to-accent/10 border border-accent/40 flex items-center justify-center"
-                >
-                  <span className="text-2xl font-bold text-accent tracking-tight">YS</span>
-                </motion.div>
-                <div className="text-center">
-                  <p className="text-gray-200 font-semibold text-sm">Yasah Sai Chandra</p>
-                  <p className="text-accent text-xs mt-0.5">Software Engineer</p>
-                </div>
+                <Image
+                  src="/SC_headshot.png"
+                  alt="Yasah Sai Chandra Borusu"
+                  fill
+                  className="object-cover object-top"
+                  priority
+                />
               </motion.div>
             </div>
           </motion.div>
