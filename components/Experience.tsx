@@ -20,7 +20,7 @@ const experiences = [
   {
     title: "Cloud & AI Intern",
     company: "Astrani Technology Solutions",
-    location: "Hybrid/Remote",
+    location: " Ashburn, VA (Hybrid/Remote)",
     period: "May 2025 – Jul 2025",
     current: false,
     bullets: [
@@ -41,7 +41,7 @@ const experiences = [
       "Collaborated with the team to build responsive UI components and integrate REST APIs into client-facing applications.",
       "Gained hands-on experience in the full software development lifecycle — from scoping and design to implementation and testing.",
     ],
-    tags: ["Web Development", "REST APIs", "HTML/CSS", "JavaScript"],
+    tags: ["JavaScript", "HTML/CSS", "REST APIs", "React", "Git", "SQL", "Postman"],
   },
   {
     title: "Undergraduate Teaching Assistant (Python)",
