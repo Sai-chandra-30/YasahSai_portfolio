@@ -50,7 +50,7 @@ const experiences = [
     period: "Aug 2023 – May 2026",
     current: false,
     bullets: [
-      "Guided 150+ students during labs and office hours as the main contact for Python fundamentals, debugging, and project best practices.",
+      "Guided 150+ students every semester during labs and office hours as the main contact for Python fundamentals, debugging, and project best practices.",
       "Delivered explanations and resources that improved comprehension and helped students apply course concepts to projects.",
     ],
     tags: ["Python", "Teaching", "Debugging"],
