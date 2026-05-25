@@ -47,7 +47,7 @@ const experiences = [
     title: "Undergraduate Teaching Assistant (Python)",
     company: "George Mason University",
     location: "Fairfax, VA",
-    period: "Aug 2023 – Dec 2024",
+    period: "Aug 2023 – May 2026",
     current: false,
     bullets: [
       "Guided 150+ students during labs and office hours as the main contact for Python fundamentals, debugging, and project best practices.",
