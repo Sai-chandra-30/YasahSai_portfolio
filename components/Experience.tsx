@@ -6,7 +6,7 @@ const experiences = [
   {
     title: "Software Engineer",
     company: "TheCollegeTech",
-    location: "Remote",
+    location: "Hyderabad, India (Hybrid/Remote)",
     period: "Aug 2025 – May 2026",
     current: false,
     bullets: [
