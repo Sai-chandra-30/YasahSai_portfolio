@@ -7,7 +7,7 @@ const experiences = [
     title: "Software Engineer",
     company: "TheCollegeTech",
     location: "Hyderabad, India (Hybrid/Remote)",
-    period: "Aug 2025 – May 2026",
+    period: "Aug 2025 – April 2026",
     current: false,
     bullets: [
       "Co-building an EdTech platform with a small team — shipping features across Learning Management, Campus Management, and Placement Management systems (attendance & gradebook, timetables, placement applications, notifications).",
