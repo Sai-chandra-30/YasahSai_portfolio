@@ -8,7 +8,7 @@ const experiences = [
     company: "TheCollegeTech",
     location: "Remote",
     period: "Aug 2025 – May 2026",
-    current: true,
+    current: false,
     bullets: [
       "Co-building an EdTech platform with a small team — shipping features across Learning Management, Campus Management, and Placement Management systems (attendance & gradebook, timetables, placement applications, notifications).",
       "Architected a reusable React + TypeScript component library (tables/forms/modals) with form validation and API clients; improved state management using idiomatic hooks and patterns.",
