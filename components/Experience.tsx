@@ -33,7 +33,7 @@ const experiences = [
   {
     title: "Software Engineer Intern",
     company: "Rise Consultancy",
-    location: "Remote"
+    location: "Remote",
     period: "May 2024 – Aug 2024",
     current: false,
     bullets: [
