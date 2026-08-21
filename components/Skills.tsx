@@ -16,7 +16,7 @@ const skillGroups = [
   {
     category: "Cloud & Databases",
     icon: "☁️",
-    skills: ["AWS Bedrock", "AWS S3", "DynamoDB", "AWS RDS", "PostgreSQL", "MySQL"],
+    skills: ["AWS Bedrock", "AWS S3", "DynamoDB", "AWS RDS","GCP","Azure", "PostgreSQL", "MySQL"],
   },
   {
     category: "AI & ML",
