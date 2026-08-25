@@ -12,7 +12,7 @@ const highlights = [
   { label: "Based in", value: "Fairfax, VA" },
   { label: "Studying at", value: "George Mason University" },
   { label: "Graduating", value: "December 2026" },
-  { label: "Open to", value: "Internships, Full-Time & Research" },
+  { label: "Open to", value: "Full-Time Roles & Research Collaborations" },
 ];
 
 export default function About() {
