@@ -87,12 +87,13 @@ export default function About() {
               that solves real problems.
             </p>
             <p className="text-gray-400 leading-relaxed mb-2">
-              I&apos;ve shipped features as a Full Stack Developer at TheCollegeTech, built internal AI tools
-              on AWS Bedrock during my internship at Astrani Technology Solutions, and helped 150+ students
-              debug and grow as a Python TA at GMU. I thrive where product thinking meets solid engineering.
+              Most recently, I co-founded TheCollegeTech as one of four founding engineers, built internal AI
+              tools on AWS Bedrock during my internship at Astrani Technology Solutions, and I&apos;ve been the
+              Python TA at GMU since 2023, supporting 150+ students each semester. I thrive where product
+              thinking meets solid engineering.
             </p>
             <p className="text-gray-400 leading-relaxed mb-8">
-              I&apos;m always open to internships, full-time roles, research collaborations, or interesting
+              I&apos;m always open to full-time roles, research collaborations, or interesting
               side projects — if you&apos;re building something meaningful, let&apos;s talk.
             </p>
 
