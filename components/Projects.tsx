@@ -5,6 +5,21 @@ import { useRef } from "react";
 
 const projects = [
   {
+    name: "Brevify — Banking Compliance Disclosure Pipeline",
+    description:
+      "A multi-stage pipeline that turns dense federal banking regulations into a queryable compliance engine. It downloads and parses Reg Z and Reg DD from the eCFR API into structured, machine-readable rules, then evaluates marketing claims against that rule set to flag required disclosures before they ever reach a compliance reviewer.",
+    tags: ["Python", "OpenAI API", "Streamlit", "Reg Z/Reg DD", "eCFR API"],
+    highlights: [
+      "OpenAI-powered extraction converts 266 legal chunks into 369 rule records and a 50-term glossary",
+      "Two-call LLM engine classifies each claim and returns risk level, required disclosures, and missing product terms",
+      "Streamlit app supports single-claim lookup and batch CSV analysis with in-session caching",
+    ],
+    icon: "⚖️",
+    gradient: "from-amber-500/10 to-orange-500/5",
+    github: "",
+    live: "",
+  },
+  {
     name: "MindEase — AI Task & Wellness Planner",
     description:
       "A chatbot + dashboard app that turns messy natural-language thoughts into a structured daily action plan. Users type freely (e.g. 'finish assignment, email professor, buy groceries') and MindEase extracts tasks, assigns priority labels, breaks big tasks into steps, and updates a live dashboard instantly.",
