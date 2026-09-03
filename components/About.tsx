@@ -51,16 +51,16 @@ export default function About() {
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-0 rounded-full border-2 border-dashed border-accent/20"
+                className="photo-ring absolute inset-0 rounded-full border-2 border-dashed border-accent/20"
               />
               {/* Accent glow */}
-              <div className="absolute inset-2 rounded-full shadow-[0_0_40px_rgba(6,182,212,0.12)]" />
+              <div className="photo-glow absolute inset-2 rounded-full shadow-[0_0_40px_rgba(6,182,212,0.12)]" />
               {/* Photo */}
               <motion.div
                 animate={{ y: [0, -6, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                 whileHover={{ scale: 1.03 }}
-                className="absolute inset-3 rounded-full overflow-hidden border-2 border-accent/40"
+                className="photo-frame absolute inset-3 rounded-full overflow-hidden border-2 border-accent/40"
               >
                 <Image
                   src="/SC_headshot.png"

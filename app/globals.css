@@ -17,11 +17,11 @@
 .light {
   --bg: #f8fafc;
   --surface: #ffffff;
-  --accent: #0891b2;
-  --accent-hover: #0e7490;
-  --border: #e2e8f0;
+  --accent: #0e7490;
+  --accent-hover: #155e75;
+  --border: #cbd5e1;
   --text-primary: #0f172a;
-  --text-muted: #64748b;
+  --text-muted: #475569;
 }
 
 html {
@@ -49,15 +49,21 @@ body {
 .light .text-gray-50  { color: #0f172a; }
 .light .text-gray-100 { color: #1e293b; }
 .light .text-gray-200 { color: #334155; }
-.light .text-gray-300 { color: #475569; }
-.light .text-gray-400 { color: #64748b; }
-.light .text-gray-500 { color: #94a3b8; }
-.light .text-gray-600 { color: #94a3b8; }
+.light .text-gray-300 { color: #334155; }
+.light .text-gray-400 { color: #475569; }
+.light .text-gray-500 { color: #64748b; }
+.light .text-gray-600 { color: #64748b; }
 
 /* Light mode: surface & background overrides */
 .light .bg-surface   { background-color: var(--surface); }
 .light .bg-background { background-color: var(--bg); }
 .light .border-border { border-color: var(--border); }
+
+/* Light mode: the headshot's decorative rings need real contrast on a white page,
+   and the photo itself needs an edge so light clothing doesn't bleed into the background */
+.light .photo-ring  { border-color: rgba(14, 116, 144, 0.45); }
+.light .photo-frame { border-color: #0e7490; }
+.light .photo-glow  { box-shadow: 0 10px 30px rgba(15, 23, 42, 0.18); }
 
 /* Input fields in light mode */
 .light input,
